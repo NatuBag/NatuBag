@@ -185,6 +185,9 @@ nav a:hover::after { width: 100%; }
   position: absolute; inset: 0;
   width: 100%; height: 100%; object-fit: cover; z-index: 0;
   filter: brightness(0.45) saturate(0.8);
+  pointer-events: none;
+  /* Escala el iframe para cubrir toda la pantalla */
+  transform: scale(1.8);
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
@@ -826,10 +829,15 @@ footer {
 
 <!-- ════════════════ HERO ════════════════ -->
 <section class="hero">
-  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="none">
-    <source src="https://videos.pexels.com/video-files/8522207/8522207-hd_1920_1080_25fps.mp4" type="video/mp4"/>
-    <source src="https://videos.pexels.com/video-files/6508756/6508756-hd_1920_1080_30fps.mp4" type="video/mp4"/>
-  </video>
+  <iframe
+    class="hero-video"
+    id="heroVideo"
+    src="https://www.youtube.com/embed/LbVqQJO7_n8?autoplay=1&mute=1&loop=1&playlist=LbVqQJO7_n8&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&start=2"
+    title="Plant sprouting timelapse"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+  ></iframe>
   <div class="hero-overlay"></div>
 
   <svg class="hero-leaf tl" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -1225,7 +1233,7 @@ footer {
         <h2>Hablemos.<br><em>Construyamos juntos</em>.</h2>
         <p>NatuBag es un proyecto estudiantil con enfoque sustentable. Escríbenos para conocer más sobre el producto, el proceso o posibles alianzas comerciales.</p>
         <div class="contacto-btns">
-          <a href="mailto:natubag@gmail.com" class="cbtn primary">Enviar correo</a>
+          <a href="mailto:natubag3@gmail.com" class="cbtn primary">Enviar correo</a>
           <a href="#contacto" class="cbtn secondary">Ver formulario ↓</a>
         </div>
       </div>
@@ -1234,9 +1242,9 @@ footer {
         <h3>Contáctanos</h3>
         <p>Selecciona la opción que prefieras.</p>
         <div class="contact-cards">
-          <a class="ccard" href="mailto:natubag@gmail.com">
+          <a class="ccard" href="mailto:natubag3@gmail.com">
             <div class="ccard-ico">✉️</div>
-            <div><span class="ccard-lbl">Correo electrónico</span><span class="ccard-val">natubag@gmail.com</span></div>
+            <div><span class="ccard-lbl">Correo electrónico</span><span class="ccard-val">natubag3@gmail.com</span></div>
           </a>
           <a class="ccard" href="tel:8994813715">
             <div class="ccard-ico">📞</div>
@@ -1254,7 +1262,7 @@ footer {
         <div class="form-divider">
           <span class="form-kicker">✉ Formulario de contacto</span>
           <div class="form-success" id="formOK"><p>🌱 ¡Mensaje enviado! Te responderemos pronto.</p></div>
-          <form class="contacto-form" id="cForm" action="https://formsubmit.co/natubag@gmail.com" method="POST">
+          <form class="contacto-form" id="cForm" action="https://formsubmit.co/natubag3@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="Nuevo mensaje desde NatuBag 🌱"/>
             <input type="hidden" name="_captcha" value="false"/>
             <input type="hidden" name="_next" value=""/>
@@ -1297,15 +1305,7 @@ window.addEventListener('load', () => {
   setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1400);
 });
 
-// ── VIDEO lazy load
-(function(){
-  const v = document.getElementById('heroVideo');
-  if(!v) return;
-  let loaded = false;
-  function load(){ if(loaded) return; loaded=true; v.load(); }
-  const t = setTimeout(load, 2800);
-  ['scroll','touchstart','mousemove'].forEach(e => window.addEventListener(e, ()=>{clearTimeout(t);load();},{once:true,passive:true}));
-})();
+// (video replaced with YouTube iframe)
 
 // ── PROGRESS + HEADER + BACK TO TOP
 const hdr = document.getElementById('hdr');
